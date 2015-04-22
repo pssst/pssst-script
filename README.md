@@ -8,9 +8,9 @@ Amazon
 
 Debian
 ------
-* `install.sh` - Installs the CLI (w/o root permission)
-* `makedeb.sh` - Creates a Debian package of the CLI
-* `makeiso.sh` - Creates a Debian minimal ISO image with user keys and CLI
+* `install.sh` - Installs the `CLI` (w/o _root_ permission)
+* `makedeb.sh` - Creates a Debian package of the `CLI`
+* `makeiso.sh` - Creates a Debian minimal `ISO` image with user keys and `CLI`
 
 Docker
 ------
@@ -18,8 +18,8 @@ Docker
 
 Example
 -------
-* `pssst-pull.py` - Example script derived from the CLI for file pulling
-* `pssst-push.py` - Example script derived from the CLI for file pushing
+* `pssst-pull.py` - Example script derived from the `CLI` for file pulling
+* `pssst-push.py` - Example script derived from the `CLI` for file pushing
 * `pssst-box.sh`  - Displays and persists the latest messages from a box
 
 Heroku
@@ -32,4 +32,4 @@ Uberspace
 
 Windows
 -------
-* `makebin.cmd` - Creates a Windows PE file of the CLI
+* `makebin.cmd` - Creates a Windows `PE` file of the `CLI`
