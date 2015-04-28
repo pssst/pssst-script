@@ -39,10 +39,10 @@ RUN \
   echo '\n# Node.js\nexport PATH="node_modules/.bin:$PATH"' >> $PROFILE
 
 # Define mountable directories.
-VOLUME ["/pssst"]
+VOLUME ["/opt/pssst"]
 
 # Define working directory.
-WORKDIR /pssst
+WORKDIR /opt/pssst
 
 # Install Pssst.
 RUN \
@@ -52,7 +52,7 @@ RUN \
   cp -f config/amazon/t2.micro.conf /etc/redis/redis.conf && \
   mv pssst/server/* /pssst && \
   rm -rf config pssst && \
-  cd /pssst && \
+  cd /opt/pssst && \
   npm install
 
 # Expose ports.

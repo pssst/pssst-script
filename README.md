@@ -24,11 +24,15 @@ Example
 
 Heroku
 ------
-* `update-pssst.sh` - Starts a server instance on https://heroku.com
+* `update-pssst.sh` - Updates a server instance on https://heroku.com
+
+JiffyBox
+--------
+* `bootstrap.sh` - Creates a server instance on https://jiffybox.de
 
 Uberspace
 ---------
-* `update-pssst.sh` - Starts a server instance on https://uberspace.de
+* `update-pssst.sh` - Updates a server instance on https://uberspace.de
 
 Windows
 -------

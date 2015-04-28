@@ -25,7 +25,7 @@ RUN \
   rm -rf /tmp/redis-stable* && \
   sed -i 's/^\(bind .*\)$/# \1/' /etc/redis/redis.conf && \
   sed -i 's/^\(daemonize .*\)$/# \1/' /etc/redis/redis.conf && \
-  sed -i 's/^\(dir .*\)$/# \1\ndir \/pssst/' /etc/redis/redis.conf && \
+  sed -i 's/^\(dir .*\)$/# \1\ndir \/opt/pssst/' /etc/redis/redis.conf && \
   sed -i 's/^\(logfile .*\)$/# \1/' /etc/redis/redis.conf
 
 # Install Node.js.
@@ -44,10 +44,10 @@ RUN \
   echo '\n# Node.js\nexport PATH="node_modules/.bin:$PATH"' >> $PROFILE
 
 # Define mountable directories.
-VOLUME ["/pssst"]
+VOLUME ["/opt/pssst"]
 
 # Define working directory.
-WORKDIR /pssst
+WORKDIR /opt/pssst
 
 # Install Pssst.
 RUN \
@@ -55,7 +55,7 @@ RUN \
   git clone https://github.com/pssst/pssst && \
   mv pssst/server/* /pssst && \
   rm -rf pssst && \
-  cd /pssst && \
+  cd /opt/pssst && \
   npm install
 
 # Expose ports.

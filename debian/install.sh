@@ -10,8 +10,9 @@ else
     DIR=$HOME
 fi
 
-wget -O $DIR/pssst $URL > /dev/null 2>&1
+echo "Installing Pssst into $DIR..."
+
+wget -qO $DIR/pssst -o /dev/null $URL
 chmod 755 $DIR/pssst
 
-echo "Pssst installed in $DIR"
 exit 0
