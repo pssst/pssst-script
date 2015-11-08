@@ -1,17 +1,19 @@
 #!/bin/bash
-# This code is a sample and should not be used in a productive environment
 set -o errexit
 set -o nounset
 
+# Show script usage
 if [[ -z ${1:-} || -z ${2:-} ]]; then
     echo Usage: $(basename $0) USERNAME PASSWORD
     exit 2
 fi
 
+# Check if server is available
 if [[ ! `ping -c1 api.pssst.name` ]]; then
     exit 1
 fi
 
+# Pull and log all messages
 while true; do
     MESSAGE="$(pssst pull $1:$2)"
 

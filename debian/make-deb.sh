@@ -10,21 +10,27 @@ fi
 
 git clone https://github.com/pssst/pssst -b $BRANCH
 
+# Get package version
 VERSION=$(cat pssst/app/cli/pssst.py | grep '__version__')
 VERSION=$(echo $VERSION | sed 's/[^0-9.]*\([0-9.]*\).*/\1/')
 
-DEB=pssst-$VERSION/DEBIAN
-BIN=pssst-$VERSION/usr/bin
-MAN=pssst-$VERSION/usr/share/man/man1
-DOC=pssst-$VERSION/usr/share/doc/pssst
+PKG=pssst_$VERSION-1_all.deb
+TMP=pssst-$VERSION
+
+DEB=$TMP/DEBIAN
+BIN=$TMP/usr/bin
+MAN=$TMP/usr/share/man/man1
+DOC=$TMP/usr/share/doc/pssst
 
 mkdir -p $DEB $BIN $MAN $DOC
 
-gzip -c pssst/app/man/pssst > $MAN/pssst.1.gz
+# Create binary, manpage and documentation
+gzip -c pssst/doc/man/pssst > $MAN/pssst.1.gz
 cp pssst/app/cli/pssst.py $BIN/pssst
 cp pssst/* $DOC/ || true
 chmod a+x $BIN/pssst
 
+# Create control metadata
 cat > $DEB/control <<EOF
 Package: pssst
 Section: web
@@ -37,6 +43,7 @@ Maintainer: Christian & Christian <hello@pssst.name>
 Description: Pssst CLI
 EOF
 
+# Create copyright metadata
 cat > $DEB/copyright <<EOF
 Format-Specification: http://svn.debian.org/wsvn/dep/web/deps/dep5.mdwn?op=file&rev=135
 
@@ -62,9 +69,9 @@ License: GPL-3+
  version 2 can be found in the file 'usr/share/common-licenses/GPL-3'.
 EOF
 
-dpkg -b pssst-$VERSION pssst_$VERSION-1_all.deb
+# Create package
+dpkg -b $TMP $PKG
+rm -rf pssst $TMP
 
-rm -rf pssst pssst-$VERSION
-
-echo "Created file pssst_$VERSION-1_all.deb"
+echo "Created file $PKG"
 exit 0

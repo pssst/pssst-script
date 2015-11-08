@@ -2,6 +2,7 @@
 set -o errexit
 set -o nounset
 
+# Show script usage
 if [[ -z ${1:-} ]]; then
     echo Usage: $(basename $0) BRANCH
     exit 2
@@ -11,44 +12,48 @@ BRANCH=$1
 CONFIG=$1
 
 if [ "$BRANCH" = "master" ]; then
-    SERVER=api
+    ENDPOINT=api
 else
-    SERVER=dev
+    ENDPOINT=dev
 fi
 
-RUN=$HOME/run/pssst
-CFG=$HOME/etc/pssst
-ETC=$HOME/etc/run-pssst.$SERVER
-SVC=$HOME/service/pssst.$SERVER
+RUN=$HOME/run/pssst/$ENDPOINT
 
-DIR=$RUN/$SERVER
+CFG=$HOME/etc/pssst
+ETC=$HOME/etc/run-pssst.$ENDPOINT
+SVC=$HOME/service/pssst.$ENDPOINT
 
 if [[ ! -d $CFG/$CONFIG ]]; then
     CONFIG=default
 fi
 
-echo "Checking out $SERVER server (Branch $BRANCH) in $DIR..."
+echo "Checking out $ENDPOINT (Branch $BRANCH) in $RUN..."
 
+# Stop current service
 if [[ -d $SVC ]]; then
     svc -dx $SVC
     sleep 3
 fi
 
+# Clean up
 rm -rf $SVC
 rm -rf $ETC
-rm -rf $DIR
+rm -rf $RUN
 
-git clone https://github.com/pssst/pssst.git -b $BRANCH $DIR/tmp
+git clone https://github.com/pssst/pssst.git -b $BRANCH $RUN/tmp
 
-mv $DIR/tmp/server/* $DIR/
-rm -rf $DIR/tmp
-mkdir $DIR/www
+# Use only server
+mv $RUN/tmp/server/* $RUN/
+rm -rf $RUN/tmp
+mkdir $RUN/www
 
-cd $DIR && npm install
+# Install modules and config
+cd $RUN && npm install
 cp $CFG/$CONFIG/* .
 mv id_rsa.pub www/key
 
-uberspace-setup-service pssst.$SERVER node $DIR/start
+# Start new service
+uberspace-setup-service pssst.$ENDPOINT node $RUN/start
 
 echo "Done"
 exit 0

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-This code is a sample and should not be used in a productive environment.
+WARNING: This code is only a basic example and not fully tested yet.
 """
 import base64
 import io
@@ -43,7 +43,7 @@ def main(script, username=None, path="."):
 
             io.open(filename, "wb").write(filedata)
 
-            print("Pulled '%s'" % filename)
+            print("Pulled file '%s'" % filename)
             print("%s, %s" % (Pssst.Name(user), datetime.fromtimestamp(time)))
 
     except Exception as ex:

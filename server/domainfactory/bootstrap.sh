@@ -41,15 +41,15 @@ cp -R pssst/server/* $DIR/
 cd $DIR
 cat > config.json <<EOF
 {
-  "debug": 0,
   "port": 80,
+  "debug": 0,
   "db": {
     "source": "/opt/pssst/db/redis.sock",
     "number": 0
   },
   "app": {
     "allow": null,
-    "limit": null
+    "quota": null
   }
 }
 EOF
@@ -58,10 +58,10 @@ rm -rf /tmp/pssst*
 
 # Install Pssst Redis config
 cd /tmp
-git clone https://github.com/pssst/config
-cp config/jiffybox/cloudlevel1.conf $DIR/db/redis.conf
+git clone https://github.com/pssst/pssst-config
+cp pssst-config/domainfactory/cloudlevel-1.conf $DIR/db/redis.conf
 touch $DIR/db/redis.sock
-rm -rf /tmp/config*
+rm -rf /tmp/pssst-config*
 
 # Run servers
 useradd pssst

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-This code is a sample and should not be used in a productive environment.
+WARNING: This code is only a basic example and not fully tested yet.
 """
 import base64
 import io
@@ -37,7 +37,7 @@ def main(script, username=None, receiver=None, filename=None):
             "filedata": base64.b64encode(filedata).decode("ascii")
         }))
 
-        print("Pushed '%s'" % filename)
+        print("Pushed file '%s'" % filename)
 
     except Exception as ex:
         return "%s error: %s" % (script, ex)

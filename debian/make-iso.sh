@@ -2,11 +2,13 @@
 set -o errexit
 set -o nounset
 
+# Show script usage
 if [[ -z ${1:-} ]]; then
     echo Usage: $(basename $0) USER
     exit 2
 fi
 
+# Show script error
 if [[ $EUID -ne 0 ]]; then
     echo "This script must be run as root" 1>&2
     exit 1
@@ -14,8 +16,13 @@ fi
 
 mkdir -p binary/live binary/isolinux
 
+# Install required packages
 sudo apt-get install live-build syslinux squashfs-tools xorriso
+
+# Create basic chroot environment
 sudo debootstrap --arch=i386 wheezy chroot
+
+# Setup chroot environment
 sudo chroot chroot /bin/bash -x <<EOF
 export HOME=/root
 export LC_ALL=C
@@ -52,6 +59,7 @@ umount /proc /sys /dev/pts
 exit
 EOF
 
+# Create boot config
 cat > binary/isolinux/isolinux.cfg <<EOF
 prompt 0
 timeout 0
@@ -63,6 +71,7 @@ label auto
     append initrd=/live/initrd boot=live persistence quiet
 EOF
 
+# Create login config
 cat <<EOF | sudo tee -a chroot/etc/inittab
 id:2:initdefault:
 si::sysinit:/etc/init.d/rcS
@@ -82,13 +91,18 @@ po::powerokwait:/etc/init.d/powerfail stop
 1:2345:respawn:/sbin/getty --autologin root 38400 tty1
 EOF
 
+# Use the calling users private keys
 sudo cp /home/$1/.pssst.* chroot/root/ || true
+
+# Set up kernel and boot manager
 sudo cp chroot/boot/vmlinuz-* binary/live/vmlinuz
 sudo cp chroot/boot/initrd.img-* binary/live/initrd
 sudo cp /usr/lib/syslinux/isolinux.bin binary/isolinux/
 
+# Create compressed file system
 sudo mksquashfs chroot binary/live/filesystem.squashfs -comp xz -e boot
 
+# Burn iso image to file
 xorriso -as mkisofs -r -J -joliet-long -l \
   -isohybrid-mbr /usr/lib/syslinux/isohdpfx.bin -partition_offset 16 \
   -A "Pssst" -b isolinux/isolinux.bin -c isolinux/boot.cat \
