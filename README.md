@@ -9,44 +9,54 @@ encryption.
 
 This repository contains our maintenance and utility scripts.
 
-Binary
+Client
 ------
-### OS X
-* `build.sh`  - Builds an Mac OS X `APP` file of the `CLI`
+### Build
+This folder contains client build scripts:
 
-### Windows
-* `build.cmd` - Builds an Windows `EXE` file of the `CLI`
+#### OS X
+* `build.sh` builds an Mac OS X `APP` file of the `CLI`.
 
-Debian
-------
-* `install.sh`  - Installs the `CLI` (w/o _root_ permission)
-* `make-deb.sh` - Creates a Debian package of the `CLI`
-* `make-iso.sh` - Creates a Debian minimal bootable `ISO` of the `CLI`
+#### Windows
+* `build.cmd` builds an Windows `EXE` file of the `CLI`.
 
-Demo
-----
-* `pssst-box.sh`       - Displays and logs the latest messages
-* `pssst-file-pull.py` - Example script about how to pull a file via the `CLI`
-* `pssst-file-push.py` - Example script about how to push a file via the `CLI`
-
-Docker
-------
-### Amazon
-* `Dockerfile` - Docker container for Amazon Web Services
-
-### Docker
-* `Dockerfile` - Docker container based on Debian stable
+### Example
+This folder contains client example scripts:
+* `pssst-box.sh` shows and persists the latest messages to `pssst.<username>`.
+* `pssst-file-pull.py` shows how to pull a file via the derived `CLI`.
+* `pssst-file-push.py` shows how to push a file via the derived `CLI`.
 
 Server
 ------
-### DomainFactory
-* `bootstrap.sh` - Starts a server instance on [JiffyBox](https://jiffybox.de)
+### Docker
+This folder contains server docker files:
 
-### Heroku
-* `bootstrap.sh` - Starts a server instance on [Heroku](https://heroku.com)
+#### Amazon
+* `Dockerfile` is a docker container for Amazon Web Services.
 
-### Uberspace
-* `update-pssst.sh` - Runs our endpoints on [Uberspace](https://uberspace.de)
+#### Docker
+* `Dockerfile` is a docker container based on Debian stable.
+
+### Hoster
+This folder contains server setup scripts:
+
+#### DomainFactory
+* `bootstrap.sh` starts a server instance on [JiffyBox](https://jiffybox.de).
+
+#### Heroku
+* `bootstrap.sh` starts a server instance on [Heroku](https://heroku.com).
+
+#### Uberspace
+* `update-pssst.sh` runs our endpoints on [Uberspace](https://uberspace.de).
+
+Utility
+-------
+This folder contains other useful scripts:
+
+### Linux
+* `install.sh` installs the `CLI` (w/o _root_ permission).
+* `make-deb.sh` creates a Debian package of the `CLI`.
+* `make-iso.sh` creates a Debian minimal bootable `ISO` of the `CLI`.
 
 License
 -------
