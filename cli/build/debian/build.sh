@@ -11,7 +11,7 @@ fi
 git clone https://github.com/pssst/pssst -b $BRANCH
 
 # Get package version
-VERSION=$(cat pssst/app/cli/pssst.py | grep '__version__')
+VERSION=$(cat pssst/src/cli/pssst.py | grep '__version__')
 VERSION=$(echo $VERSION | sed 's/[^0-9.]*\([0-9.]*\).*/\1/')
 
 PKG=pssst_$VERSION-1_all.deb
@@ -25,8 +25,8 @@ DOC=$TMP/usr/share/doc/pssst
 mkdir -p $DEB $BIN $MAN $DOC
 
 # Create binary, manpage and documentation
-gzip -c pssst/doc/man/pssst > $MAN/pssst.1.gz
-cp pssst/app/cli/pssst.py $BIN/pssst
+gzip -c pssst/docs/man/pssst > $MAN/pssst.1.gz
+cp pssst/src/cli/pssst.py $BIN/pssst
 cp pssst/* $DOC/ || true
 chmod a+x $BIN/pssst
 

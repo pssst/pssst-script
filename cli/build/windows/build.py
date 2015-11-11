@@ -6,7 +6,7 @@ import sys
 try:
     from pssst import __version__
 except ImportError:
-    sys.exit("Please execute the build script")
+    sys.exit("Please install the Pssst CLI (https://pssst.name)")
 
 
 try:

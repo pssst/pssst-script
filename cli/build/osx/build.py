@@ -6,7 +6,7 @@ import sys
 try:
     from pssst import __version__
 except ImportError:
-    sys.exit("Please execute the build script")
+    sys.exit("Please install the Pssst CLI (https://pssst.name)")
 
 
 try:
@@ -31,7 +31,7 @@ setuptools.setup(
             ],
             "plist": {
                 "CFBundleName": "Pssst",
-                "CFBundleIdentifier": "name.pssst",
+                "CFBundleIdentifier": "name.pssst.cli",
                 "CFBundleExecutable": "pssst.py",
                 "CFBundleVersion": __version__
             }

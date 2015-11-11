@@ -49,8 +49,8 @@ RUN \
   cd /tmp && \
   git clone https://github.com/pssst/pssst && \
   git clone https://github.com/pssst/pssst-config && \
-  cp -f pssst-config/amazon/t2.micro.conf /etc/redis/redis.conf && \
-  mv pssst/server/* /pssst && \
+  cp -f pssst-config/redis/amazon/t2.micro.conf /etc/redis/redis.conf && \
+  mv pssst/src/server/* /pssst && \
   rm -rf pssst pssst-config && \
   cd /opt/pssst && \
   npm install

@@ -43,7 +43,7 @@ rm -rf $RUN
 git clone https://github.com/pssst/pssst.git -b $BRANCH $RUN/tmp
 
 # Use only server
-mv $RUN/tmp/server/* $RUN/
+mv $RUN/tmp/src/server/* $RUN/
 rm -rf $RUN/tmp
 mkdir $RUN/www
 

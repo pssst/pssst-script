@@ -43,7 +43,7 @@ else
 fi
 
 # Use only server
-cp -r $TMP/server/* .
+cp -r $TMP/src/server/* .
 rm -rf $TMP
 
 # Push new version

@@ -9,10 +9,13 @@ encryption.
 
 This repository contains our maintenance and utility scripts.
 
-Client
-------
+CLI
+---
 ### Build
-This folder contains client build scripts:
+This folder contains CLI build scripts:
+
+#### Debian
+* `build.sh` builds an Debian `DEB` package of the `CLI`.
 
 #### OS X
 * `build.sh` builds an Mac OS X `APP` file of the `CLI`.
@@ -21,10 +24,15 @@ This folder contains client build scripts:
 * `build.cmd` builds an Windows `EXE` file of the `CLI`.
 
 ### Example
-This folder contains client example scripts:
+This folder contains CLI example scripts:
 * `pssst-box.sh` shows and persists the latest messages to `pssst.<username>`.
 * `pssst-file-pull.py` shows how to pull a file via the derived `CLI`.
 * `pssst-file-push.py` shows how to push a file via the derived `CLI`.
+
+### Other
+This folder contains other useful scripts:
+* `pssst-install.sh` installs the `CLI` (w/o _root_ permission).
+* `pssst-iso.sh` creates a bootable `ISO` image of the `CLI`.
 
 Server
 ------
@@ -48,15 +56,6 @@ This folder contains server setup scripts:
 
 #### Uberspace
 * `update-pssst.sh` runs our endpoints on [Uberspace](https://uberspace.de).
-
-Utility
--------
-This folder contains other useful scripts:
-
-### Linux
-* `install.sh` installs the `CLI` (w/o _root_ permission).
-* `make-deb.sh` creates a Debian package of the `CLI`.
-* `make-iso.sh` creates a Debian minimal bootable `ISO` of the `CLI`.
 
 License
 -------

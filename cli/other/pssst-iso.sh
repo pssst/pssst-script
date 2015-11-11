@@ -45,7 +45,7 @@ apt-get -y autoremove
 apt-get -y clean
 
 cd /usr/local/bin/
-wget -O pssst https://raw.github.com/pssst/pssst/master/app/cli/pssst.py
+wget -O pssst https://raw.github.com/pssst/pssst/master/src/cli/pssst.py
 chmod a+x /usr/local/bin/pssst
 
 echo ALL: ALL EXCEPT api.pssst.name > /etc/hosts.deny

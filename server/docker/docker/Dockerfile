@@ -53,7 +53,7 @@ WORKDIR /opt/pssst
 RUN \
   cd /tmp && \
   git clone https://github.com/pssst/pssst && \
-  mv pssst/server/* /pssst && \
+  mv pssst/src/server/* /pssst && \
   rm -rf pssst && \
   cd /opt/pssst && \
   npm install
