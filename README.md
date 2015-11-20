@@ -31,6 +31,7 @@ This folder contains CLI example scripts:
 
 ### Other
 This folder contains other useful scripts:
+* `p.sh` shortcut script for pulling/pushing messages (uses `~/.id_pssst`).
 * `pssst-install.sh` installs the `CLI` (w/o _root_ permission).
 * `pssst-iso.sh` creates a bootable `ISO` image of the `CLI`.
 
