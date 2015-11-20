@@ -25,13 +25,13 @@ This folder contains CLI build scripts:
 
 ### Example
 This folder contains CLI example scripts:
+* `p.sh` shortcut script for pulling/pushing messages (uses `~/.id_pssst`).
 * `pssst-box.sh` shows and persists the latest messages to `pssst.<username>`.
 * `pssst-file-pull.py` shows how to pull a file via the derived `CLI`.
 * `pssst-file-push.py` shows how to push a file via the derived `CLI`.
 
 ### Other
 This folder contains other useful scripts:
-* `p.sh` shortcut script for pulling/pushing messages (uses `~/.id_pssst`).
 * `pssst-install.sh` installs the `CLI` (w/o _root_ permission).
 * `pssst-iso.sh` creates a bootable `ISO` image of the `CLI`.
 
