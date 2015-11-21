@@ -58,6 +58,10 @@ This folder contains server setup scripts:
 #### Uberspace
 * `update-pssst.sh` runs our endpoints on [Uberspace](https://uberspace.de).
 
+### Other
+This folder contains other useful scripts:
+* `shell.js` server shell for manipulating database entities directly.
+
 License
 -------
 Copyright (C) 2013-2015  Christian & Christian  <hello@pssst.name>
