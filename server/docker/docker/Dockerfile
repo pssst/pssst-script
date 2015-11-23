@@ -62,4 +62,4 @@ RUN \
 EXPOSE 62421
 
 # Define default command
-CMD ["redis-server", "/etc/redis/redis.conf", "&", "node", "start"]
+CMD ["redis-server", "/etc/redis/redis.conf", "&", "node", "index.js"]
