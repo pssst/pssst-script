@@ -53,7 +53,7 @@ cp $CFG/$CONFIG/* .
 mv id_rsa.pub www/key
 
 # Start new service
-uberspace-setup-service pssst.$ENDPOINT node $RUN/start
+uberspace-setup-service pssst.$ENDPOINT node $RUN/index.js
 
 echo "Done"
 exit 0
