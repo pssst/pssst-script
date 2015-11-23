@@ -68,7 +68,7 @@ useradd pssst
 chown -R pssst:pssst $DIR
 
 $RUN nohup /usr/local/bin/redis-server $DIR/db/redis.conf
-$RUN nohup /usr/local/bin/node $DIR/start.js
+$RUN nohup /usr/local/bin/node $DIR/index.js
 
 echo "Done"
 exit 0
