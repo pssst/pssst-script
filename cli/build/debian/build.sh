@@ -25,7 +25,7 @@ DOC=$TMP/usr/share/doc/pssst
 mkdir -p $DEB $BIN $MAN $DOC
 
 # Create binary, manpage and documentation
-gzip -c pssst/docs/man/pssst > $MAN/pssst.1.gz
+gzip -c pssst/doc/man/pssst > $MAN/pssst.1.gz
 cp pssst/src/cli/pssst.py $BIN/pssst
 cp pssst/* $DOC/ || true
 chmod a+x $BIN/pssst
