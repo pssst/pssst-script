@@ -12,10 +12,11 @@ fi
 
 # Update script from source
 if [[ -z ${2:-} ]]; then
-    echo "Update: $(basename $0)"
+    echo "Update script..."
     wget -qO $0 $SCRIPT
     chmod +x $0
-    exit $($0 $1 updated)
+    $0 $1 run
+    exit 0
 fi
 
 BRANCH=$1
