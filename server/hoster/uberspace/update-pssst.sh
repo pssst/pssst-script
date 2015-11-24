@@ -12,7 +12,7 @@ fi
 
 # Update script from source
 if [[ -z ${2:-} ]]; then
-    echo "Update script..."
+    echo "Updating script..."
     wget -qO $0 $SCRIPT
     chmod +x $0
     $0 $1 run
