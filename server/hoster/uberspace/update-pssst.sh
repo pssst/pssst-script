@@ -2,14 +2,25 @@
 set -o errexit
 set -o nounset
 
+SCRIPT=https://raw.github.com/pssst/pssst-script/master/server/hoster/uberspace/update-pssst.sh
+
 # Show script usage
 if [[ -z ${1:-} ]]; then
-    echo Usage: $(basename $0) BRANCH
+    echo "Usage: $(basename $0) BRANCH"
     exit 2
+fi
+
+# Update script from source
+if [[ -z ${2:-} ]]; then
+    echo "Update: $(basename $0)"
+    wget -qO $0 $SCRIPT
+    chmod +x $0
+    exit $($0 $1 updated)
 fi
 
 BRANCH=$1
 CONFIG=$1
+STATUS=$2
 
 if [ "$BRANCH" = "master" ]; then
     ENDPOINT=api
