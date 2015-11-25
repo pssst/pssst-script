@@ -64,7 +64,7 @@ This folder contains other useful scripts:
 
 License
 -------
-Licensed under the terms of the [GPLv3 License](LICENSE).
+Released under the terms of the [GPLv3](LICENSE) license.
 
 ----------
 Created by
